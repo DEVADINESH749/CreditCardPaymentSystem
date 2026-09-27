@@ -106,8 +106,8 @@ Django tests and payment API tests are included in the project.
 
 Latest verified results:
 
-- Django tests: PASS
-- Payment API tests: PASS
+- Django tests: 25 tests passed
+- Payment API tests: 10 tests passed
 - Django coverage: 95%
 - Payment API coverage: 78%
 
