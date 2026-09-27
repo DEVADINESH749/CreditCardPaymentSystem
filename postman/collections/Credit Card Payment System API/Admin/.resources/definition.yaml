@@ -1,0 +1,3 @@
+$kind: collection
+description: No admin REST API exists. The project's /admin/ route is Django's session-authenticated HTML admin site, so no invented admin API request is included.
+order: 5000

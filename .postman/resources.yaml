@@ -1,0 +1,10 @@
+# Use this workspace to collaborate
+workspace:
+  id: 1eb0afcb-ab02-401b-8ca5-aaec9bb23201
+
+localResources:
+  collections: []
+
+cloudResources:
+  collections:
+    ../postman/collections/Credit Card Payment System API: 9730ab0a-0827-494b-8fb0-391fafb4c280

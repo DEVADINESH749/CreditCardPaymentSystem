@@ -1,0 +1,14 @@
+$kind: collection
+description: Collection for the existing Django and FastAPI endpoints documented in docs/API.md. Set user_password and test_card_number to your own test values before using Register, Login, and Add Card. Run Delete Card only when you intend to remove the card created by Add Card.
+variables:
+  base_url: http://127.0.0.1:8000
+  django_url: http://127.0.0.1:8000
+  fastapi_url: http://127.0.0.1:8001
+  access_token: ""
+  refresh_token: ""
+  register_email: ""
+  user_password: ""
+  test_card_number: ""
+  card_id: ""
+  transaction_id: ""
+  filter_date: ""

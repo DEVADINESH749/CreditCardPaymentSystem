@@ -1,0 +1,19 @@
+$kind: http-request
+url: "{{django_url}}/transactions/?date={{filter_date}}&status=SUCCESS&amount=12.50"
+method: GET
+headers:
+  Authorization: Bearer {{access_token}}
+queryParams:
+  date: "{{filter_date}}"
+  status: SUCCESS
+  amount: "12.50"
+scripts:
+  - type: beforeRequest
+    code: pm.collectionVariables.set('filter_date', new Date().toISOString().slice(0, 10));
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test('Filtered transaction history returns 200', () => pm.response.to.have.status(200));
+      pm.test('Filtered transaction history is an array', () => pm.expect(pm.response.json()).to.be.an('array'));
+    language: text/javascript
+order: 3000

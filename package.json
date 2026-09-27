@@ -1,0 +1,11 @@
+{
+  "name": "credit-card-payment-system",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "concurrently \"cd backend && python manage.py runserver\" \"cd frontend && npm run dev\"",
+    "dev:payment-api": "cd backend && venv\\Scripts\\python.exe -m uvicorn payment_api.main:app --host 127.0.0.1 --port 8001"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

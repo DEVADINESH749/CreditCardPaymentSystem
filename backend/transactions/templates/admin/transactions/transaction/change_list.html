@@ -1,0 +1,17 @@
+{% extends "admin/change_list.html" %}
+
+{% block content %}
+<div class="module">
+  <h2>Daily payment summary for {{ daily_payment_summary.date|date:"Y-m-d" }}</h2>
+  <table>
+    <tbody>
+      <tr><th scope="row">Total transactions</th><td>{{ daily_payment_summary.total_count }}</td></tr>
+      <tr><th scope="row">Successful</th><td>{{ daily_payment_summary.success_count }}</td></tr>
+      <tr><th scope="row">Failed</th><td>{{ daily_payment_summary.failed_count }}</td></tr>
+      <tr><th scope="row">Pending</th><td>{{ daily_payment_summary.pending_count }}</td></tr>
+      <tr><th scope="row">Successful amount</th><td>{{ daily_payment_summary.success_amount|floatformat:2 }}</td></tr>
+    </tbody>
+  </table>
+</div>
+{{ block.super }}
+{% endblock %}

@@ -1,0 +1,10 @@
+$kind: http-request
+url: "{{fastapi_url}}/"
+method: GET
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Payment API health returns 200', () => pm.response.to.have.status(200));
+      pm.test('Payment API health message is present', () => pm.expect(pm.response.json().message).to.eql('Credit Card Payment API is running'));
+    language: text/javascript
+order: 1000

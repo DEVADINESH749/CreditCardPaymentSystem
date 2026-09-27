@@ -1,0 +1,20 @@
+$kind: http-request
+url: "{{django_url}}/users/token/refresh/"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "refresh": "{{refresh_token}}"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Refresh returns 200', () => pm.response.to.have.status(200));
+      const body = pm.response.json();
+      pm.test('Refresh returns an access token', () => pm.expect(body.access).to.be.a('string'));
+      if (body.access) pm.collectionVariables.set('access_token', body.access);
+    language: text/javascript
+order: 3000
