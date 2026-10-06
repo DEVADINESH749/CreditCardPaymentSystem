@@ -27,4 +27,4 @@ Thumbs.db
 # SQLite databases
 *.sqlite3
 
-docs/credit_card_db_backup.sql
+

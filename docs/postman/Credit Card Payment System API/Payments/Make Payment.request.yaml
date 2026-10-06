@@ -1,0 +1,23 @@
+$kind: http-request
+url: "{{fastapi_url}}/payment"
+method: POST
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{access_token}}
+body:
+  type: json
+  content: |-
+    {
+      "card_id": {{card_id}},
+      "amount": "12.50"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Payment returns 201', () => pm.response.to.have.status(201));
+      const body = pm.response.json();
+      pm.test('Payment result is SUCCESS or FAILED', () => pm.expect(['SUCCESS', 'FAILED']).to.include(body.status));
+      pm.test('Payment response excludes card data', () => { pm.expect(body).not.to.have.property('card_number'); pm.expect(body).not.to.have.property('cvv'); });
+      if (body.transaction_id) pm.collectionVariables.set('transaction_id', body.transaction_id);
+    language: text/javascript
+order: 2000

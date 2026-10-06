@@ -1,9 +1,12 @@
 # Use this workspace to collaborate
 workspace:
-  id: 1eb0afcb-ab02-401b-8ca5-aaec9bb23201
+  id: ""
 
 localResources:
-  collections: []
+  collections:
+    - ../docs/postman/Credit Card Payment System API
+
+# Each entry here maps a local resource to one or more corresponding objects in Postman Cloud
 
 cloudResources:
   collections:

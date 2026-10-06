@@ -1,0 +1,25 @@
+$kind: http-request
+url: "{{django_url}}/cards/"
+method: POST
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{access_token}}
+body:
+  type: json
+  content: |-
+    {
+      "card_type": "CREDIT",
+      "card_holder_name": "Postman Test User",
+      "card_number": "{{test_card_number}}",
+      "expiry_month": 12,
+      "expiry_year": 2099
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Card creation returns 201', () => pm.response.to.have.status(201));
+      const body = pm.response.json();
+      pm.test('Card response contains masked digits only', () => { pm.expect(body.masked_card_number).to.be.a('string'); pm.expect(body).not.to.have.property('card_number'); pm.expect(body).not.to.have.property('cvv'); });
+      if (body.id) pm.collectionVariables.set('card_id', body.id);
+    language: text/javascript
+order: 1000
